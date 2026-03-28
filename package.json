@@ -1,0 +1,21 @@
+{
+  "name": "playwright-demo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report",
+    "test:bdd": "cucumber-js",
+    "test:bdd:report": "open cucumber-report.html"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.7.0",
+    "@playwright/test": "^1.54.2",
+    "@types/node": "^24.5.2",
+    "playwright-bdd": "^8.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
