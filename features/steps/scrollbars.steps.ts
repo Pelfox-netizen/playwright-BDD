@@ -16,6 +16,13 @@ Then("the hidden button should not be in viewport", async ({ page }) => {
   expect(isInViewport).toBe(false);
 });
 
+Then("the button should not be in viewport", async ({ page }) => {
+  const button = page.locator("button:has-text('Button')");
+  const boundingBox = await button.boundingBox();
+  const isInViewport = boundingBox !== null && boundingBox.y >= 0;
+  expect(isInViewport).toBe(false);
+});
+
 When("I scroll down to the button", async ({ page }) => {
   const button = page.locator("button:has-text('Button')");
   await button.scrollIntoViewIfNeeded();
@@ -36,11 +43,6 @@ When("I click on the scrolled button", async ({ page }) => {
   const button = page.locator("button:has-text('Button')");
   await button.click();
   await page.waitForLoadState("networkidle");
-});
-
-Then("the page should display a success message", async ({ page }) => {
-  const successMessage = page.locator("text=/success|loaded|completed/i");
-  await expect(successMessage).toBeVisible();
 });
 
 When("I scroll back to the top", async ({ page }) => {

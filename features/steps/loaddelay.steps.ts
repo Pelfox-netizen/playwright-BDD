@@ -42,11 +42,6 @@ When("I click on the loaded button", async ({ page }) => {
   await page.waitForLoadState("networkidle");
 });
 
-Then("the page should display a success message", async ({ page }) => {
-  const successMessage = page.locator("text=/success|loaded|completed/i");
-  await expect(successMessage).toBeVisible();
-});
-
 When("I set a timeout of {int} seconds", async ({ page }, seconds: number) => {
   // Store timeout in context for later use
   (page as any).customTimeout = seconds * 1000;

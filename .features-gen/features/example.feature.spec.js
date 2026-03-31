@@ -1,4 +1,4 @@
-// Generated from: features/lighthouse-ai-home.feature
+// Generated from: features/example.feature
 import { test } from "playwright-bdd";
 
 test.describe('Lighthouse AI Homepage', () => {
@@ -31,7 +31,7 @@ test.describe('Lighthouse AI Homepage', () => {
 
 test.use({
   $test: [({}, use) => use(test), { scope: 'test', box: true }],
-  $uri: [({}, use) => use('features/lighthouse-ai-home.feature'), { scope: 'test', box: true }],
+  $uri: [({}, use) => use('features/example.feature'), { scope: 'test', box: true }],
   $bddFileData: [({}, use) => use(bddFileData), { scope: "test", box: true }],
 });
 
