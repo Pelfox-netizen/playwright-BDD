@@ -13,9 +13,17 @@ When("I click the Click me link twice", async ({ page }) => {
   await page.getByText("Click me", { exact: true }).click();
 });
 
+When("I hover over the Click me link", async ({ page }) => {
+  await page.getByTitle("Click me").hover();
+});
+
 When("I click the Link Button link twice", async ({ page }) => {
   await page.getByText("Link Button", { exact: true }).click();
   await page.getByText("Link Button", { exact: true }).click();
+});
+
+Then("the Click me link should become active", async ({ page }) => {
+  await expect(page.getByTitle("Active Link")).toHaveClass(/text-warning/);
 });
 
 Then("the Click me link count should be {string}", async ({ page }, count: string) => {
