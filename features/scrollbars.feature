@@ -9,6 +9,10 @@ Feature: Scrollbars
         When I scroll down to the button
         Then the button should be visible in the viewport
 
+    Scenario: Verify the Scrollbars page title
+        Given I navigate to the Scrollbars page
+        Then the page title should contain "Scrollbars"
+
     Scenario: Click button after scrolling
         Given I navigate to the Scrollbars page
         When I scroll down to the button
