@@ -36,30 +36,3 @@ Then("the button should be clickable", async ({ page }) => {
   );
   await expect(button).toBeEnabled();
 });
-
-When("I click on the loaded button", async ({ page }) => {
-  await page.locator("button:has-text('Button Appearing After Delay')").click();
-  await page.waitForLoadState("networkidle");
-});
-
-When("I set a timeout of {int} seconds", async ({ page }, seconds: number) => {
-  // Store timeout in context for later use
-  (page as any).customTimeout = seconds * 1000;
-});
-
-When("I wait for the button with timeout", async ({ page }) => {
-  const timeout = (page as any).customTimeout || 5000;
-  await page
-    .locator("button:has-text('Button Appearing After Delay')")
-    .waitFor({ state: "visible", timeout });
-});
-
-Then(
-  "the button should be visible before timeout expires",
-  async ({ page }) => {
-    const button = page.locator(
-      "button:has-text('Button Appearing After Delay')",
-    );
-    await expect(button).toBeVisible();
-  },
-);

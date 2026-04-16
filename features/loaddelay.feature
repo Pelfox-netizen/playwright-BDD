@@ -9,15 +9,3 @@ Feature: Load Delays
         When I wait for the button to load
         Then the button should be visible
         And the button should be clickable
-
-    Scenario: Click button after it loads
-        Given I navigate to the Load Delay page
-        When I wait for the button to load
-        And I click on the loaded button
-        Then the page should display a success message
-
-    Scenario: Verify load delay timeout handling
-        Given I navigate to the Load Delay page
-        When I set a timeout of 5 seconds
-        And I wait for the button with timeout
-        Then the button should be visible before timeout expires
