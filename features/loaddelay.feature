@@ -9,3 +9,7 @@ Feature: Load Delays
         When I wait for the button to load
         Then the button should be visible
         And the button should be clickable
+
+    Scenario: Verify the Load Delay page title
+        Given I navigate to the Load Delay page
+        Then the page title should contain "Load Delay"
