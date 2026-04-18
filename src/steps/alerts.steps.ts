@@ -54,36 +54,43 @@ When("I accept the confirm dialog", async ({ page }) => {
     await dialog.accept();
   });
 
-  await expect.poll(() => messages.confirmResult, { timeout: 3000 }).toBe("Yes");
-});
-
-When("I answer the prompt dialog with {string}", async ({ page }, answer: string) => {
-  const messages = getDialogMessages(page);
-
-  page.once("dialog", async (dialog) => {
-    messages.prompt = dialog.message();
-    await dialog.accept(answer);
-  });
-
-  await page.locator("#promptButton").click();
-  await expect.poll(() => messages.prompt).not.toBeUndefined();
-
-  page.once("dialog", async (dialog) => {
-    messages.promptResult = dialog.message();
-    await dialog.accept();
-  });
-
   await expect
-    .poll(() => messages.promptResult, { timeout: 3000 })
-    .toBe(`User value: ${answer}`);
+    .poll(() => messages.confirmResult, { timeout: 3000 })
+    .toBe("Yes");
 });
+
+When(
+  "I answer the prompt dialog with {string}",
+  async ({ page }, answer: string) => {
+    const messages = getDialogMessages(page);
+
+    page.once("dialog", async (dialog) => {
+      messages.prompt = dialog.message();
+      await dialog.accept(answer);
+    });
+
+    await page.locator("#promptButton").click();
+    await expect.poll(() => messages.prompt).not.toBeUndefined();
+
+    page.once("dialog", async (dialog) => {
+      messages.promptResult = dialog.message();
+      await dialog.accept();
+    });
+
+    await expect
+      .poll(() => messages.promptResult, { timeout: 3000 })
+      .toBe(`User value: ${answer}`);
+  },
+);
 
 Then("the Alerts dialogs should be handled successfully", async ({ page }) => {
   const messages = getDialogMessages(page);
 
-  expect(messages.alert).toBe("Today is a working day.\nOr less likely a holiday.");
+  expect(messages.alert).toBe(
+    "Today is a working day.\nOr less likely a holiday.",
+  );
   expect(messages.confirm).toBe("Today is Friday.\nDo you agree?");
   expect(messages.confirmResult).toBe("Yes");
-  expect(messages.prompt).toBe('Choose "cats" or \'dogs\'.\nEnter your value:');
+  expect(messages.prompt).toBe("Choose \"cats\" or 'dogs'.\nEnter your value:");
   expect(messages.promptResult).toBe("User value: dogs");
 });

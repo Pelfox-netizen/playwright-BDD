@@ -9,3 +9,11 @@ Feature: Text Input
         And I enter a new button name
         And I click the updating button
         Then the updating button should display the new name
+
+    Scenario: Clear text input and verify button updates
+        Given I navigate to the UI Testing Playground home page
+        When I open the Text Input page
+        And I enter a new button name
+        And I clear the text input field
+        And I click the updating button
+        Then the updating button should display the default name
