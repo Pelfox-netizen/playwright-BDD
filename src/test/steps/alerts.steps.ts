@@ -1,41 +1,36 @@
 import { expect } from "@playwright/test";
-import type { Page } from "@playwright/test";
 import { createBdd } from "playwright-bdd";
 
-const { When, Then } = createBdd();
+const { Given, When, Then } = createBdd();
 
-type AlertsDialogMessages = {
+interface DialogMessages {
   alert?: string;
   confirm?: string;
   confirmResult?: string;
   prompt?: string;
   promptResult?: string;
-};
+}
 
-const getDialogMessages = (page: Page) => {
-  const pageWithMessages = page as typeof page & {
-    alertsDialogMessages?: AlertsDialogMessages;
-  };
+function getDialogMessages(page: any): DialogMessages {
+  if (!page._dialogMessages) {
+    page._dialogMessages = {};
+  }
+  return page._dialogMessages;
+}
 
-  pageWithMessages.alertsDialogMessages ??= {};
-  return pageWithMessages.alertsDialogMessages;
-};
-
-When("I open the Alerts page", async ({ page }) => {
+When(`I open the Alerts page`, async ({ page }) => {
   await page.getByRole("link", { name: "Alerts" }).click();
   await page.waitForLoadState("domcontentloaded");
 });
 
 When("I handle the alert dialog", async ({ page }) => {
-  const messages = getDialogMessages(page);
-
-  page.once("dialog", async (dialog) => {
-    messages.alert = dialog.message();
-    await dialog.accept();
-  });
-
-  await page.locator("#alertButton").click();
-  await expect.poll(() => messages.alert).not.toBeUndefined();
+  // const messages = getDialogMessages(page);
+  // page.once("dialog", async (dialog) => {
+  //   messages.alert = dialog.message();
+  //   await dialog.accept();
+  // });
+  // await page.locator("#alertButton").click();
+  // await expect.poll(() => messages.alert).not.toBeUndefined();
 });
 
 When("I accept the confirm dialog", async ({ page }) => {

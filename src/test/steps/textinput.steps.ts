@@ -18,6 +18,17 @@ When("I click the updating button", async ({ page }) => {
   await page.locator("#updatingButton").click();
 });
 
+When("I clear the text input field", async ({ page }) => {
+  await page.locator("#newButtonName").clear();
+});
+
 Then("the updating button should display the new name", async ({ page }) => {
   await expect(page.locator("#updatingButton")).toHaveText(newButtonName);
 });
+
+Then(
+  "the updating button should display the default name",
+  async ({ page }) => {
+    await expect(page.locator("#updatingButton")).toHaveText("Updating Button");
+  },
+);
