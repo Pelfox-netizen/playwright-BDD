@@ -26,3 +26,12 @@ Feature: Progress Bar
         And I wait for the progress bar to complete
         Then the progress bar should display 100%
         And the completion message should be visible
+
+    Scenario: Reset button returns progress bar to zero
+        Given I navigate to the UI Testing Playground home page
+        When I open the Progress Bar page
+        And I click the start button
+        And I wait for the progress bar to complete
+        And I click the reset button
+        Then the progress bar should display 0%
+        And the completion message should not be visible
