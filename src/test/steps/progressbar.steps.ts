@@ -18,6 +18,10 @@ When("I click the start button", async ({ page }) => {
   await page.locator("#startButton").click();
 });
 
+When("I click the reset button", async ({ page }) => {
+  await page.locator("#resetButton").click();
+});
+
 Then("the progress bar should start increasing", async ({ page }) => {
   const progressBar = page.locator("#progressBar");
   const initialValue = parseInt(await progressBar.getAttribute("aria-valuenow") || "0");
@@ -39,4 +43,9 @@ When("I wait for the progress bar to complete", async ({ page }) => {
 Then("the completion message should be visible", async ({ page }) => {
   const completionMessage = page.locator("#completionMessage");
   await expect(completionMessage).toBeVisible();
+});
+
+Then("the completion message should not be visible", async ({ page }) => {
+  const completionMessage = page.locator("#completionMessage");
+  await expect(completionMessage).not.toBeVisible();
 });
