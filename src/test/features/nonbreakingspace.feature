@@ -7,3 +7,8 @@ Feature: Non-Breaking Space
         Given I navigate to the UI Testing Playground home page
         When I open the Non-Breaking Space page
         Then the complete text with non-breaking spaces should be visible
+
+    Scenario: Verify text remains on single line with non-breaking space
+        Given I navigate to the UI Testing Playground home page
+        When I open the Non-Breaking Space page
+        Then the text should remain on a single line without wrapping
