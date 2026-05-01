@@ -9,8 +9,8 @@ When("I open the Sample App page", async ({ page }) => {
 });
 
 When("I enter valid Sample App credentials", async ({ page }) => {
-  await page.getByRole("textbox", { name: "User Name" }).fill("TestUser");
-  await page.getByRole("textbox", { name: "Password" }).fill("pwd");
+  await page.locator("#username").fill("TestUser");
+  await page.locator("#password").fill("pwd");
 });
 
 When("I submit the Sample App login form", async ({ page }) => {

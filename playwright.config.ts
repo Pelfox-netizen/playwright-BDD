@@ -16,6 +16,7 @@ export default defineConfig({
   use: {
     baseURL: "https://playwright.dev",
     trace: "on-first-retry",
+    ignoreHTTPSErrors: true,
   },
   projects: [
     {

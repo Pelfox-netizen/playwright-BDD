@@ -19,3 +19,16 @@ Feature: Visibility
         And the not displayed button should be hidden
         And the offscreen button should be outside the viewport
         And the overlapped button should remain visible
+
+    Scenario: Show button restores element visibility states
+        Given I navigate to the UI Testing Playground home page
+        When I open the Visibility page
+        And I click the Hide button
+        And I click the Show button
+        Then the removed button should be visible
+        And the zero width button should be visible
+        And the transparent button should be visible
+        And the invisible button should be visible
+        And the not displayed button should be visible
+        And the offscreen button should be visible
+        And the overlapped button should remain visible
