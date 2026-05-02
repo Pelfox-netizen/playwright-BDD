@@ -31,4 +31,4 @@ Feature: Visibility
         And the invisible button should be visible
         And the not displayed button should be visible
         And the offscreen button should be visible
-        And the overlapped button should remain visible
+        And the overlapped button should remain visiblet
