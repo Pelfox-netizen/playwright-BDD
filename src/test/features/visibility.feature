@@ -32,3 +32,14 @@ Feature: Visibility
         And the not displayed button should be visible
         And the offscreen button should be visible
         And the overlapped button should remain visiblet
+
+    Scenario: All elements are initially visible on page load
+        Given I navigate to the UI Testing Playground home page
+        When I open the Visibility page
+        Then the removed button should be visible
+        And the zero width button should be visible
+        And the transparent button should be visible
+        And the invisible button should be visible
+        And the not displayed button should be visible
+        And the offscreen button should be visible
+        And the overlapped button should be visible
