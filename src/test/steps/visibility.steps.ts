@@ -29,6 +29,10 @@ When("I click the Hide button", async ({ page }) => {
   await page.getByRole("button", { name: "Hide" }).click();
 });
 
+When("I click the Show button", async ({ page }) => {
+  await page.getByRole("button", { name: "Show" }).click();
+});
+
 Then("the removed button should be hidden", async ({ page }) => {
   await expect(page.locator("#removedButton")).toBeHidden();
 });
@@ -55,4 +59,28 @@ Then("the offscreen button should be outside the viewport", async ({ page }) => 
 
 Then("the overlapped button should remain visible", async ({ page }) => {
   await expect(page.locator("#overlappedButton")).toBeVisible();
+});
+
+Then("the removed button should be visible", async ({ page }) => {
+  await expect(page.locator("#removedButton")).toBeVisible();
+});
+
+Then("the zero width button should be visible", async ({ page }) => {
+  await expect(page.locator("#zeroWidthButton")).toBeVisible();
+});
+
+Then("the transparent button should be visible", async ({ page }) => {
+  await expect(page.locator("#transparentButton")).toBeVisible();
+});
+
+Then("the invisible button should be visible", async ({ page }) => {
+  await expect(page.locator("#invisibleButton")).toBeVisible();
+});
+
+Then("the not displayed button should be visible", async ({ page }) => {
+  await expect(page.locator("#notdisplayedButton")).toBeVisible();
+});
+
+Then("the offscreen button should be visible", async ({ page }) => {
+  await expect(page.locator("#offscreenButton")).toBeVisible();
 });
