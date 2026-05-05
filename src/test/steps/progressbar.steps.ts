@@ -8,11 +8,14 @@ When("I open the Progress Bar page", async ({ page }) => {
   await page.waitForLoadState("domcontentloaded");
 });
 
-Then("the progress bar should display {int}%", async ({ page }, percentage: number) => {
-  const progressBar = page.locator("#progressBar");
-  const ariaValueNow = await progressBar.getAttribute("aria-valuenow");
-  expect(parseInt(ariaValueNow || "0")).toBe(percentage);
-});
+Then(
+  "the progress bar should display {int}%",
+  async ({ page }, percentage: number) => {
+    const progressBar = page.locator("#progressBar");
+    const ariaValueNow = await progressBar.getAttribute("aria-valuenow");
+    expect(parseInt(ariaValueNow || "0")).toBe(percentage);
+  },
+);
 
 When("I click the start button", async ({ page }) => {
   await page.locator("#startButton").click();
@@ -24,20 +27,26 @@ When("I click the reset button", async ({ page }) => {
 
 Then("the progress bar should start increasing", async ({ page }) => {
   const progressBar = page.locator("#progressBar");
-  const initialValue = parseInt(await progressBar.getAttribute("aria-valuenow") || "0");
-  
+  const initialValue = parseInt(
+    (await progressBar.getAttribute("aria-valuenow")) || "0",
+  );
+
   // Wait a moment for the progress to increment
   await page.waitForTimeout(1000);
-  
-  const updatedValue = parseInt(await progressBar.getAttribute("aria-valuenow") || "0");
+
+  const updatedValue = parseInt(
+    (await progressBar.getAttribute("aria-valuenow")) || "0",
+  );
   expect(updatedValue).toBeGreaterThan(initialValue);
 });
 
 When("I wait for the progress bar to complete", async ({ page }) => {
   const progressBar = page.locator("#progressBar");
-  
+
   // Poll until progress bar reaches 100%
-  await expect(progressBar).toHaveAttribute("aria-valuenow", "100", { timeout: 60000 });
+  await expect(progressBar).toHaveAttribute("aria-valuenow", "100", {
+    timeout: 60000,
+  });
 });
 
 Then("the completion message should be visible", async ({ page }) => {
