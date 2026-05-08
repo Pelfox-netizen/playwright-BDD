@@ -23,3 +23,8 @@ When("I click the auto wait target button", async ({ page }) => {
 Then("the auto wait target should report it was clicked", async ({ page }) => {
   await expect(page.locator("#opstatus")).toHaveText("Target clicked.");
 });
+
+Then("the Auto Wait page should be displayed", async ({ page }) => {
+  await expect(page).toHaveURL(/\/autowait$/);
+  await expect(page.locator("#target")).toBeVisible();
+});
