@@ -12,3 +12,8 @@ Feature: Verify Text
         Given I navigate to the UI Testing Playground home page
         When I open the Verify Text page
         Then the welcome message should be visible
+
+    Scenario: Verify that the page contains the expected heading
+        Given I navigate to the UI Testing Playground home page
+        When I open the Verify Text page
+        Then the page should contain the text "Welcome"
