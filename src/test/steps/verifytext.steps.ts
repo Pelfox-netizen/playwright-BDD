@@ -13,3 +13,7 @@ Then("the welcome message should be visible", async ({ page }) => {
     page.locator("//span[normalize-space(.)='Welcome UserName!']"),
   ).toBeVisible();
 });
+
+Then("the page should contain the text {string}", async ({ page }, text) => {
+  await expect(page.locator(`text=${text}`)).toBeVisible();
+});
