@@ -24,3 +24,8 @@ Feature: Scrollbars
         When I scroll down to the button
         And I scroll back to the top
         Then the button should not be in viewport
+
+    Scenario: Verify scroll position changes after scrolling down
+        Given I navigate to the Scrollbars page
+        When I scroll down to the button
+        Then the scroll position should be greater than zero
