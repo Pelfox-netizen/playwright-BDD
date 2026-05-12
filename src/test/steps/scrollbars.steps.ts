@@ -49,3 +49,8 @@ When("I scroll back to the top", async ({ page }) => {
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.waitForTimeout(500);
 });
+
+Then("the scroll position should be greater than zero", async ({ page }) => {
+  const scrollPosition = await page.evaluate(() => window.scrollY);
+  expect(scrollPosition).toBeGreaterThan(0);
+});
