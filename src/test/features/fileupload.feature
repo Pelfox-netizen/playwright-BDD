@@ -8,3 +8,8 @@ Feature: File Upload
         When I open the File Upload page
         And I upload a test file
         Then the file upload should be successful and display the file name
+
+    Scenario: Navigate to File Upload page from home
+        Given I navigate to the UI Testing Playground home page
+        When I open the File Upload page
+        Then the page title should contain "File Upload"
