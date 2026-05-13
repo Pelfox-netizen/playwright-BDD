@@ -36,3 +36,7 @@ Then("the file upload should be successful and display the file name", async ({ 
   const resultText = await uploadResult.textContent();
   expect(resultText).toContain("test-file.txt");
 });
+
+Then("the page title should contain {string}", async ({ page }, expectedText) => {
+  await expect(page.locator("h1, h2, h3")).toContainText(expectedText);
+});
