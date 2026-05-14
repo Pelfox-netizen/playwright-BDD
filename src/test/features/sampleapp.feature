@@ -16,3 +16,10 @@ Feature: Sample App
         Then the Sample App should show a successful login message
         When I log out of the Sample App
         Then the Sample App should show the logged out state
+
+    Scenario: Invalid credentials display error message
+        Given I navigate to the UI Testing Playground home page
+        When I open the Sample App page
+        And I enter invalid Sample App credentials
+        And I submit the Sample App login form
+        Then the Sample App should display an error message
