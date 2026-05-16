@@ -29,3 +29,12 @@ Then("the Sample App should show the logged out state", async ({ page }) => {
   await expect(page.locator("#loginstatus")).toContainText("User logged out.");
   await expect(page.getByRole("button", { name: "Log In" })).toBeVisible();
 });
+
+When("I enter invalid Sample App credentials", async ({ page }) => {
+  await page.locator("#username").fill("InvalidUser");
+  await page.locator("#password").fill("wrongpassword");
+});
+
+Then("the Sample App should display an error message", async ({ page }) => {
+  await expect(page.locator("#loginstatus")).toContainText("Invalid credentials");
+});
