@@ -17,3 +17,8 @@ Feature: Verify Text
         Given I navigate to the UI Testing Playground home page
         When I open the Verify Text page
         Then the page should contain the text "Welcome"
+
+    Scenario: Verify that the page does not contain unexpected text
+        Given I navigate to the UI Testing Playground home page
+        When I open the Verify Text page
+        Then the page should not contain the text "Error"
