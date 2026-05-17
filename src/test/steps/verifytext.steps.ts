@@ -17,3 +17,7 @@ Then("the welcome message should be visible", async ({ page }) => {
 Then("the page should contain the text {string}", async ({ page }, text) => {
   await expect(page.locator(`text=${text}`)).toBeVisible();
 });
+
+Then("the page should not contain the text {string}", async ({ page }, text) => {
+  await expect(page.locator(`text=${text}`)).not.toBeVisible();
+});
