@@ -13,3 +13,9 @@ Feature: Client Side Delay
         When I open the Client Side Delay page
         And I click the client side delay button
         Then the client side delay result should be displayed
+
+    Scenario: Verify the result displays after the delay
+        Given I navigate to the UI Testing Playground home page
+        When I open the Client Side Delay page
+        And I click the client side delay button
+        Then the page should contain the text "Done"
