@@ -22,3 +22,8 @@ Feature: Verify Text
         Given I navigate to the UI Testing Playground home page
         When I open the Verify Text page
         Then the page should not contain the text "Error"
+
+    Scenario: Verify text with different case variations
+        Given I navigate to the UI Testing Playground home page
+        When I open the Verify Text page
+        Then the page should contain the text "welcome"
