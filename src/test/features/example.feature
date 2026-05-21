@@ -20,3 +20,7 @@ Feature: Lighthouse AI Homepage
     Given I navigate to the Lighthouse AI home page
     When I click on the About Company link
     Then the page title should contain "About Us"
+
+  Scenario: Verify homepage contains main heading
+    Given I navigate to the Lighthouse AI home page
+    Then the page should contain the text "Lighthouse"
