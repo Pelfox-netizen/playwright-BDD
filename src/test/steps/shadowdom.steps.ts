@@ -34,3 +34,11 @@ Then("the clipboard value should match the generated guid", async ({ page }) => 
   expect(generatedGuid).toBeTruthy();
   expect(clipboardValue.trim()).toBe(generatedGuid?.trim());
 });
+
+Then("the Shadow DOM component should display the generated guid", async ({ page }) => {
+  const generatedGuid = (page as typeof page & { generatedGuid?: string }).generatedGuid;
+  expect(generatedGuid).toBeTruthy();
+  // The guid is displayed inside the shadow root of #editField
+  const displayedGuid = await page.locator("#editField").inputValue();
+  expect(displayedGuid.trim()).toBe(generatedGuid?.trim());
+});
