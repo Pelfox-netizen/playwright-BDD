@@ -14,3 +14,9 @@ Feature: Shadow DOM
         And I generate a guid in the Shadow DOM component
         And I copy the guid from the Shadow DOM component
         Then the clipboard value should match the generated guid
+
+    Scenario: Verify the generated guid is displayed in the Shadow DOM
+        Given I navigate to the UI Testing Playground home page
+        When I open the Shadow DOM page
+        And I generate a guid in the Shadow DOM component
+        Then the Shadow DOM component should display the generated guid
