@@ -17,3 +17,10 @@ Feature: Text Input
         And I clear the text input field
         And I click the updating button
         Then the updating button should display the default name
+
+    Scenario: Enter a long string and verify button name
+        Given I navigate to the UI Testing Playground home page
+        When I open the Text Input page
+        And I enter a long string as the button name
+        And I click the updating button
+        Then the updating button should display the long string
